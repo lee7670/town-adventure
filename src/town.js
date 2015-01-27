@@ -124,11 +124,11 @@ function update(elapsed) {
 		x:0.0,
 		y:0.0
 	};
-	//'wasd' controls:
-	if (keys[65]) command.x -= 1.0;
-	if (keys[68]) command.x += 1.0;
-	if (keys[83]) command.y -= 1.0;
-	if (keys[87]) command.y += 1.0;
+	//First column is 'wasd', second is arrow keys:
+	if (keys[65] || keys[37]) command.x -= 1.0;
+	if (keys[68] || keys[39]) command.x += 1.0;
+	if (keys[83] || keys[40]) command.y -= 1.0;
+	if (keys[87] || keys[38]) command.y += 1.0;
 	
 	if (command.x != 0.0 || command.y != 0.0) {
 		var len = Math.sqrt(command.x * command.x + command.y * command.y);
@@ -155,7 +155,7 @@ function update(elapsed) {
 }
 
 function key(key, state) {
-	console.log(key);
+	//don't do anything
 }
 
 
