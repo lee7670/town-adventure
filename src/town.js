@@ -115,6 +115,21 @@ function draw() {
 			0,0,1,1);
 		ctx.restore();
 	})();
+
+	//rounded corners:
+	ctx.setTransform(ctx.factor,0, 0,ctx.factor, 0,0);
+	ctx.fillStyle = "#452267"; //background color of page
+	ctx.fillRect(0,0, 1,2);
+	ctx.fillRect(1,0, 1,1);
+
+	ctx.fillRect(0,238, 1,2);
+	ctx.fillRect(1,239, 1,1);
+
+	ctx.fillRect(319,0, 1,2);
+	ctx.fillRect(318,0, 1,1);
+
+	ctx.fillRect(319,238, 1,2);
+	ctx.fillRect(318,239, 1,1);
 	
 
 }
