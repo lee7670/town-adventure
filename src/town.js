@@ -40,6 +40,8 @@ var player = {
 
 
 function draw() {
+	var ctx = sald.ctx;
+
 	//First, clear the screen:
 	ctx.setTransform(ctx.factor,0, 0,ctx.factor, 0,0);
 	ctx.fillStyle = "#f0f"; //bright pink, since this *should* be drawn over
@@ -135,6 +137,8 @@ function draw() {
 }
 
 function update(elapsed) {
+	var keys = sald.keys;
+
 	var command = {
 		x:0.0,
 		y:0.0
