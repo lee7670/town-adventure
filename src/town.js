@@ -1,7 +1,7 @@
 
 var TileSize = 20;
 var PlayerSpeed = 4.0; //tiles per second
-
+var Tilemap = require('sald:Tilemap.js');
 var heroImgs = [
 	require("../img/hero1.png"),
 	require("../img/hero2.png"),
@@ -23,7 +23,7 @@ var map = [
 	[3,4,4,4,4,4,4,4,3],
 	[0,1,1,1,1,1,1,1,2]
 ];
-var Tmap = new Tilemap(tilesImg, map, 20, 20, 3, 3, map.length, map[0].length); 
+var Tmap = new Tilemap(tilesImg, map, 20, 20, 3, 3, map[0].length, map.length); 
 //camera position (in tiles):
 var camera = {
 	x: 4.5,
