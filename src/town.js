@@ -23,7 +23,7 @@ var map = [
 	[3,4,4,4,4,4,4,4,3],
 	[0,1,1,1,1,1,1,1,2]
 ];
-
+var Tmap = new Tilemap(tilesImg, map, 20, 20, 3, 3, map.length, map[0].length); 
 //camera position (in tiles):
 var camera = {
 	x: 4.5,
@@ -63,45 +63,7 @@ function draw() {
 			ctx.factor * (240 / 2 + Math.round(camera.y * TileSize)) //<-- y is added here because of sign flip
 		);
 	
-	(function drawTiles() {
-		//Find bounds of current view (avoid drawing offscreen tiles):
-		var minTile = {
-			x: Math.floor(camera.x - (320 / 2 / TileSize)) | 0,
-			y: Math.floor(camera.y - (240 / 2 / TileSize)) | 0
-		};
-		var maxTile = {
-			x: Math.floor(camera.x + (320 / 2 / TileSize)) | 0,
-			y: Math.floor(camera.y + (240 / 2 / TileSize)) | 0
-		};
-
-		//loop over all tiles in the view and draw them:
-		for (var ty = minTile.y; ty <= maxTile.y; ++ty) {
-			for (var tx = minTile.x; tx <= maxTile.x; ++tx) {
-				/*
-				//Disco Mode:
-				ctx.fillStyle = "rgb("
-					+ Math.round(Math.random() * 256) + ","
-					+ Math.round(Math.random() * 256) + ","
-					+ Math.round(Math.random() * 256) + ")";
-				ctx.fillRect(tx, ty, 1, 1);
-				*/
-
-				var idx;
-				if (ty >= 0 && ty < map.length && tx >= 0 && tx < map[ty].length) {
-					idx = map[ty][tx];
-				} else {
-					idx = 4;
-				}
-
-				ctx.save();
-				//locally flip the 'y' axis since images draw with upper-left origins:
-				ctx.transform(1,0, 0,-1, tx, ty+1);
-
-				ctx.drawImage(tilesImg, (idx % 3) * TileSize, ((idx / 3) | 0) * TileSize, TileSize, TileSize, 0,0, 1, 1);
-				ctx.restore();
-			}
-		}
-	})();
+	Tmap.draw(camera);
 
 	//draw the player:
 	(function draw_player() {
